@@ -1,19 +1,19 @@
-from rest_framework import viewsets, permissions
-from django.contrib.auth.models import User
-from .models import Task
-from .serializers import UserSerializer, TaskSerializer
+from rest_framework import viewsets
+from .models import Task, Category, Comment
+from .serializers import TaskSerializer, CategorySerializer, CommentSerializer
 
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAdminUser]
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_serializer = CategorySerializer
+
+class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
 
 class TaskViewSet(viewsets.ModelViewSet):
+    queryset = Task.objects.all()
     serializer_class = TaskSerializer
-    permission_classes = [permissions.IsAuthenticated] 
 
-    def get_queryset(self):
-        return Task.objects.filter(user=self.request.user)
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+
+    

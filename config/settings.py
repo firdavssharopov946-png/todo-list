@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'import_export',
     'todo_list',
+    'user',
 ]
 
 MIDDLEWARE = [

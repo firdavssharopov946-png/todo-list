@@ -1,10 +1,11 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import UserViewSet, TaskViewSet
+from .views import TaskViewSet, CategoryViewSet, CommentViewSet
 
 router = DefaultRouter()
-router.register('users', UserViewSet) 
-router.register('tasks', TaskViewSet, basename='task')
+router.register('tasks', TaskViewSet)
+router.register('categories', CategoryViewSet)
+router.register('comments', CommentViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
